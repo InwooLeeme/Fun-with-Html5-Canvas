@@ -3,13 +3,6 @@ const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 let pressed = false;
 
-const gradient = ctx.createLinearGradient(0,0,200,0);
-gradient.addColorStop("0", "magenta");
-gradient.addColorStop("0.5" ,"blue");
-gradient.addColorStop("1.0", "red");
-
-ctx.strokeStyle = gradient;
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -22,7 +15,7 @@ function handleResize(){
 function controllLineWidth(){
     if(!pressed){
         const repeat = setInterval(function(){
-            ctx.lineWidth = ctx.lineWidth + 0.1;
+            ctx.lineWidth = ctx.lineWidth + 0.5;
             if(pressed === false){
                 clearInterval(repeat);
                 ctx.lineWidth = 1;
