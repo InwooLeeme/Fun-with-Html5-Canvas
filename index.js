@@ -2,9 +2,12 @@
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 let pressed = false;
+let hue = 0;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
 
 // Screen resize function
 function handleResize(){
@@ -16,7 +19,7 @@ function controllLineWidth(){
     if(!pressed){
         const repeat = setInterval(function(){
             ctx.lineWidth = ctx.lineWidth + 0.5;
-            if(pressed === false){
+            if(pressed === false || ctx.lineWidth >= 30){
                 clearInterval(repeat);
                 ctx.lineWidth = 1;
             }
@@ -40,14 +43,14 @@ function handleMove(event){
         // 마우스를 눌렀을 때
         controllLineWidth();
         ctx.beginPath();
+        ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
         ctx.moveTo(x,y);
-       
+        hue++;
     }
     else{
         // 마우스를 땠을 때
         ctx.lineTo(x, y);
         ctx.stroke();
-
     }
 }
 
