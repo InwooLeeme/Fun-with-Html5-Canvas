@@ -2,8 +2,13 @@
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 let pressed = false;
-ctx.strokeStyle = "black";
-ctx.lineWidth = 5;
+
+const gradient = ctx.createLinearGradient(0,0,200,0);
+gradient.addColorStop("0", "magenta");
+gradient.addColorStop("0.5" ,"blue");
+gradient.addColorStop("1.0", "red");
+
+ctx.strokeStyle = gradient;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -12,6 +17,18 @@ canvas.height = window.innerHeight;
 function handleResize(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+}
+
+function controllLineWidth(){
+    if(!pressed){
+        const repeat = setInterval(function(){
+            ctx.lineWidth = ctx.lineWidth + 0.1;
+            if(pressed === false){
+                clearInterval(repeat);
+                ctx.lineWidth = 1;
+            }
+        },1500);
+    }
 }
 
 function startDrawing(){
@@ -25,16 +42,19 @@ function stopDrawing(){
 function handleMove(event){
     const x = event.offsetX;
     const y = event.offsetY;
-
+    
     if(!pressed){
         // 마우스를 눌렀을 때
+        controllLineWidth();
         ctx.beginPath();
         ctx.moveTo(x,y);
+       
     }
     else{
         // 마우스를 땠을 때
         ctx.lineTo(x, y);
         ctx.stroke();
+
     }
 }
 
