@@ -7,7 +7,7 @@ Make a drawing canvas using Vanilla JavaScript.
 - [x] Set up basic files(html,css and js).
 - [x] Make canvas in html file.
 - [x] Control the canvas size function using resize event.
-- [ ] Drawing line on the canvas.
+- [x] Drawing line on the canvas.
 - [ ] When mouse continue press on the canvas, the line thickens.
 - [ ] Change the line color like a rainbow.
 
@@ -16,6 +16,6 @@ Make a drawing canvas using Vanilla JavaScript.
 - [x] Set up basic files(html,css and js).
 - [x] Make canvas in html file.
 - [x] Control the canvas size function using resize event.
-- [ ] Drawing line on the canvas.
+- [x] Drawing line on the canvas.
 - [ ] When mouse continue press on the canvas, the line thickens.
 - [ ] Change the line color like a rainbow.
